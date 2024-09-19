@@ -5,7 +5,7 @@ import Post from '../components/Post/Post';
 
 export default function IndexPage() {
 
-    const { logout } = useContext(AuthContext);
+    const { currentUser, logout } = useContext(AuthContext);
 
     const handleLogout = () => {
         logout();
@@ -33,7 +33,7 @@ export default function IndexPage() {
             <div className={styles["posts"]}>
 
                 {posts.map((post, index) => (
-                    <Post key={index} content={post.caption} author={post.author.username} createdAt={post.createdAt} />
+                    <Post key={index} content={post.caption} author={post.author.username} createdAt={post.createdAt} postLikes={post.likes} comments={post.comments} currentUser={currentUser} postId={post.id} />
                 ))}
 
             </div>
