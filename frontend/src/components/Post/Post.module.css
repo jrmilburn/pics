@@ -1,0 +1,51 @@
+/* Post.css */
+
+.post {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .author-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .author-info {
+    margin-left: 12px;
+  }
+  
+  .author-name {
+    display: block;
+    font-weight: bold;
+    color: #0d8abc;
+    font-size: 1.1em;
+  }
+  
+  .post-date {
+    display: block;
+    color: #757575;
+    font-size: 0.9em;
+  }
+  
+  .post-content {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .post-content p {
+    margin: 0;
+  }
+  

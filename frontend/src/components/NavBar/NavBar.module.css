@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../../assets/ProtestGuerrilla-Regular.ttf') format('truetype');
+}
+
+.main {
+
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100vh;
+    width: 100%;
+
+}
+
+.nav {
+    grid-column: 1/2;
+    height: 100%;
+
+    padding-right: 2rem;
+    border-right: 1px solid #ccc;
+}
+
+nav {
+    height: 100%;
+    width: 100%;
+}
+
+.outlet {
+    grid-column: 2/3;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+ul {
+    height: 80%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: first baseline;
+    justify-content: space-around;
+
+}
+
+li {
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+    height: 6rem;
+
+    transition: background-color 0.3s;
+}
+
+ul li a:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+ul li a img {
+    width: 4rem;
+    height: 4rem;
+}
+
+nav h1 {
+    font-family: 'CustomFont', cursive;
+    font-size: 4rem;
+    margin: 2rem 0 0 0rem;
+    color: #333;
+}
+
+.nav-messages {
+    width: 55%;
+    border-right: 1px solid #ccc;
+}
+
+.nav-messages ul {
+    padding: 0 4rem;
+    margin: 0;
+}
+

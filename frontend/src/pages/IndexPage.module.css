@@ -1,0 +1,13 @@
+.posts {
+    max-width: 600px;
+    position: relative;
+    margin: 0 4rem;
+}
+
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(100%, 0);
+
+}
