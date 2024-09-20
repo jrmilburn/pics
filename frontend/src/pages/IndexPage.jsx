@@ -1,11 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { AuthContext } from "../context/AuthContext";
+import io from 'socket.io-client';
 import styles from './IndexPage.module.css';
 import Post from '../components/Post/Post';
 
 export default function IndexPage() {
 
     const { currentUser, logout } = useContext(AuthContext);
+    const socketRef = useRef();
 
     const handleLogout = () => {
         logout();

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Post.module.css';
 import { useState } from 'react';
+import Avatar from '../Common/Avatar';
 
 import Comment from '../Comment/Comment';
 
@@ -29,16 +30,15 @@ const Post = ({ content, author, createdAt, postLikes, comments, currentUser, po
       })
     })
 
+    setNewComment('');
+
   }
 
   return (
     <div className={styles["post"]}>
       <div className={styles["post-header"]}>
         <div className={styles["author-avatar"]}>
-          <img
-            src={`https://ui-avatars.com/api/?name=${author}&background=0D8ABC&color=fff`}
-            alt={`${author}'s avatar`}
-          />
+          <Avatar username={author} />
         </div>
         <div className={styles["author-info"]}>
           <span className={styles["author-name"]}>{author}</span>
