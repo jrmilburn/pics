@@ -21,7 +21,7 @@
 .outlet {
     grid-column: 2/3;
     width: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .nav-messages {
@@ -88,4 +88,13 @@ nav {
     width: 100%;
     padding-right: 2rem;
 
+}
+
+li img {
+
+    transition: scale 0.3s;
+}
+
+li:hover img {
+    scale: 1.03;
 }
