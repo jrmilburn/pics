@@ -66,7 +66,7 @@ const login = async (req, res) => {
             expiresIn: '1h'
         });
         
-        res.json({ message: 'Login successful', token: token})
+        res.json({ message: 'Login successful', token: token, user: payload });
     } catch(error) {
         return res.status(500).json({message: 'Internal server error'});
     }

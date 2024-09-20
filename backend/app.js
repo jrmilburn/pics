@@ -36,7 +36,10 @@ app.use('/auth', authRouter);
 app.use('/user', userRouter);
 app.use('/post', postRouter);
 app.use('/comment', commentRouter);
-app.use('/message', messageRouter);
+app.use('/message', (req, res, next) => {
+  req.io = io;
+  next();
+},messageRouter);
 
 io.on("connection", (socket) => {
   console.log("a user connected");
