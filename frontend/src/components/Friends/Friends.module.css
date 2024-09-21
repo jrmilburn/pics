@@ -1,0 +1,10 @@
+.message-users img {
+    scale: 0.5;
+}
+
+.message-users {
+    height: 75%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

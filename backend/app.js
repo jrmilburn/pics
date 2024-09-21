@@ -14,7 +14,7 @@ const authRouter = require('./routes/authRoutes');
 const postRouter = require('./routes/postRoutes');
 const commentRouter = require('./routes/commentRoutes');
 const messageRouter = require('./routes/messageRoutes');
-const friendRouter = require('./routes/friendRoutes');
+const followerRouter = require('./routes/followerRoutes');
 
 const app = express();
 const server = http.createServer(app);
@@ -35,7 +35,7 @@ app.use(passport.initialize());
 
 app.use('/auth', authRouter);
 app.use('/user', userRouter);
-app.use('friend', friendRouter);
+app.use('/follower', passport.authenticate('jwt', { session: false }), followerRouter);
 app.use('/post', postRouter);
 app.use('/comment', commentRouter);
 app.use('/message', (req, res, next) => {

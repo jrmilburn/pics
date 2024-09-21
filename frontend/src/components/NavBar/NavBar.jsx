@@ -6,6 +6,7 @@ import messageIcon from '../../assets/message.svg';
 import createIcon from '../../assets/create.svg';
 import Users from '../Users/Users';
 import Avatar from '../Common/Avatar';
+import SearchModal from './searchModal';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -13,11 +14,12 @@ export default function NavBar({ messagePage, setMessagePage }) {
 
     const { currentUser, logout } = useContext(AuthContext);
     const [activeLink, setActiveLink] = useState('/');
+    const [searchVisible, setSearchVisible] = useState(false);
 
     const openSearch = (e) => {
         e.preventDefault();
         setActiveLink('/search');
-        alert('Search is not implemented yet');
+        setSearchVisible(true);
     }
 
     const handleNavLinkClick = (path) => {
@@ -27,6 +29,10 @@ export default function NavBar({ messagePage, setMessagePage }) {
          } else {
             setMessagePage(false);
         }
+    }
+
+    const handleClose = () => {
+        setSearchVisible(false);
     }
 
     return (
@@ -44,10 +50,10 @@ export default function NavBar({ messagePage, setMessagePage }) {
                                         <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                     <li className={styles['main-nav-item']}>
-                                        <NavLink to="/" onClick={() => handleNavLinkClick('/search')} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }></p></NavLink>
+                                        <NavLink to="/" onClick={openSearch} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                     <li className={styles['main-nav-item']}>
-                                        <NavLink to="/message" onClick={openSearch} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }></p></NavLink>
+                                        <NavLink to="/message" onClick={() => handleNavLinkClick('/message')} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                     <li className={styles['main-nav-item']}>
                                         <NavLink to="/profile" onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username} /><p className={activeLink === '/profile' ? styles.selected : '' }></p></NavLink>
@@ -74,7 +80,7 @@ export default function NavBar({ messagePage, setMessagePage }) {
                                 <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }>Home</p></NavLink>
                             </li>
                             <li className={styles['main-nav-item']}>
-                                <NavLink to="/" onClick={() => handleNavLinkClick('/search')} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }>Search</p></NavLink>
+                                <NavLink to="/" onClick={openSearch} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }>Search</p></NavLink>
                             </li>
                             <li className={styles['main-nav-item']}>
                                 <NavLink to="/message" onClick={() => handleNavLinkClick('/message')} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }>Messages</p></NavLink>
@@ -94,6 +100,7 @@ export default function NavBar({ messagePage, setMessagePage }) {
                 </div>
         )}
 
+        <SearchModal visible={searchVisible} onClose={handleClose} currentUser={currentUser}/>
             
         </>
     );
