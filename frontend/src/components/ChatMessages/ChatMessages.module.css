@@ -3,9 +3,11 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    width: 100%;
     padding: 20px;
     background-color: #f8f9fa;
     position: relative; /* Ensure the container is the positioning context */
+    padding: 0.5rem;
   }
   
   .header {
@@ -24,18 +26,20 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column; /* Anchor messages to the bottom */
+    justify-content: left;
+    margin-bottom: 61px; /* Space for the chat input */
     overflow-y: auto;
-    margin-bottom: 10%; /* Space for the chat input */
   }
   
   .messageItem {
-    padding: 10px;
-    margin-bottom: 10px;
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: auto;
   }
   
   .messageItem p {
@@ -68,9 +72,9 @@
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    bottom: 5%;
-    left: 20px; /* Adjust for container padding */
-    right: 20px; /* Adjust for container padding */
+    bottom: 1rem;
+    left: 10px; /* Adjust for container padding */
+    right: 10px; /* Adjust for container padding */
     padding: 10px;
     background-color: #f8f9fa;
     border-top: 1px solid #dee2e6;

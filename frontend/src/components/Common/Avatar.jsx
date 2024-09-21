@@ -5,6 +5,7 @@ export default function Avatar({ username }) {
     <img
       src={`https://ui-avatars.com/api/?name=${username}&background=0D8ABC&color=fff`}
       alt={`${username}'s avatar`}
+      className={styles['avatar']}
     />
   );
 }

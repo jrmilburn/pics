@@ -6,24 +6,27 @@ import messageIcon from '../../assets/message.svg';
 import createIcon from '../../assets/create.svg';
 import Users from '../Users/Users';
 import Avatar from '../Common/Avatar';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 export default function NavBar({ messagePage, setMessagePage }) {
 
     const { currentUser, logout } = useContext(AuthContext);
+    const [activeLink, setActiveLink] = useState('/');
 
     const openSearch = (e) => {
         e.preventDefault();
+        setActiveLink('/search');
         alert('Search is not implemented yet');
     }
 
-    const openMessages = (e) => {
-        setMessagePage(true);
-    }
-
-    const closeMessages = (e) => {
-        setMessagePage(false);
+    const handleNavLinkClick = (path) => {
+        setActiveLink(path);
+        if(path === '/message') {
+            setMessagePage(true);
+         } else {
+            setMessagePage(false);
+        }
     }
 
     return (
@@ -33,24 +36,24 @@ export default function NavBar({ messagePage, setMessagePage }) {
                         <div className={styles["main-chat"]}>
                         <div className={styles["nav-messages"]}>
                             <nav className={styles['icons']}>
-                                <ul>
-                                    <li>
+                                <ul className={styles['main-nav']}>
+                                    <li className={styles['main-nav-item']}>
                                         <h1>pics</h1>
                                     </li>
-                                    <li>
-                                        <NavLink to="/" onClick={closeMessages}><img src={homeIcon} /><p></p></NavLink>
+                                    <li className={styles['main-nav-item']}>
+                                        <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }></p></NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/" onClick={openSearch}><img src={searchIcon} /><p></p></NavLink>
+                                    <li className={styles['main-nav-item']}>
+                                        <NavLink to="/" onClick={() => handleNavLinkClick('/search')} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }></p></NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/message" onClick={openMessages}><img src={messageIcon} /><p></p></NavLink>
+                                    <li className={styles['main-nav-item']}>
+                                        <NavLink to="/message" onClick={openSearch} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }></p></NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/profile" onClick={closeMessages}><Avatar username={currentUser.user.username} /><p></p></NavLink>
+                                    <li className={styles['main-nav-item']}>
+                                        <NavLink to="/profile" onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username} /><p className={activeLink === '/profile' ? styles.selected : '' }></p></NavLink>
                                     </li>
-                                    <li>
-                                        <NavLink to="/create" onClick={closeMessages}><img src={createIcon} /><p></p></NavLink>
+                                    <li className={styles['main-nav-item']}>
+                                        <NavLink to="/create" onClick={() => handleNavLinkClick('/create')} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                 </ul>
                             </nav>
@@ -63,24 +66,24 @@ export default function NavBar({ messagePage, setMessagePage }) {
             <div className={styles["main"]}>
                 <div className={styles["nav"]}>
                     <nav>
-                        <ul>
-                            <li>
+                        <ul className={styles['main-nav']}>
+                            <li className={styles['main-nav-item']}>
                                 <h1>pics</h1>
                             </li>
-                            <li>
-                                <NavLink to="/" onClick={closeMessages}><img src={homeIcon} /><p>Home</p></NavLink>
+                            <li className={styles['main-nav-item']}>
+                                <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }>Home</p></NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/" onClick={openSearch}><img src={searchIcon} /><p>Search</p></NavLink>
+                            <li className={styles['main-nav-item']}>
+                                <NavLink to="/" onClick={() => handleNavLinkClick('/search')} ><img src={searchIcon} /><p className={activeLink === '/search' ? styles.selected : '' }>Search</p></NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/message" onClick={openMessages}><img src={messageIcon} /><p>Messages</p></NavLink>
+                            <li className={styles['main-nav-item']}>
+                                <NavLink to="/message" onClick={() => handleNavLinkClick('/message')} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }>Messages</p></NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/profile" onClick={closeMessages}><Avatar username={currentUser.user.username}/><p>Profile</p></NavLink>
+                            <li className={styles['main-nav-item']}>
+                                <NavLink to="/profile" onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username}/><p className={activeLink === '/profile' ? styles.selected : '' }>Profile</p></NavLink>
                             </li>
-                            <li>
-                                <NavLink to="/create" onClick={closeMessages}><img src={createIcon} /><p>Create</p></NavLink>
+                            <li className={styles['main-nav-item']}>
+                                <NavLink to="/create" onClick={() => handleNavLinkClick('/create')} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }>Create</p></NavLink>
                             </li>
                         </ul>
                     </nav>

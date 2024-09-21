@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../../assets/ProtestGuerrilla-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LightFont';
+    src: url('../../assets/Roboto-Light.ttf') format('truetype');
+}
+
 .main {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -21,7 +31,8 @@
 .outlet {
     grid-column: 2/3;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .nav-messages {
@@ -36,7 +47,7 @@
     padding-right: 2rem;
 }
 
-ul {
+.main-nav {
     height: 80%;
     list-style-type: none;
     padding: 0;
@@ -47,7 +58,7 @@ ul {
     justify-content: space-around;
 }
 
-li {
+.main-nav-item{
     font-size: 1.5rem;
     font-weight: 600;
     width: 100%;
@@ -97,4 +108,9 @@ li img {
 
 li:hover img {
     scale: 1.03;
+}
+
+.selected {
+    font-family: 'LightFont', sans-serif;
+    font-weight: 300;
 }

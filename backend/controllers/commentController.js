@@ -48,6 +48,49 @@ async function createComment(req, res) {
     }
 }
 
+async function editComment(req, res) {
+
+    const { commentId } = req.params;
+    const { text } = req.body;
+
+    try {
+
+        const comment = await prisma.comment.update({
+            where: {
+                id: commentId,
+            },
+            data: {
+                text,
+            },
+        });
+
+        res.json(comment);
+
+    } catch(error) {
+        return res.status(500).json({message: 'Internal server error'});
+    }
+
+}
+
+async function deleteComment(req, res) {
+
+    const {commentId} = req.params;
+
+    try {
+
+        await prisma.comment.delete({
+            where: {
+                id: commentId,
+            },
+        });
+    } catch(error) {
+        return res.status(500).json({message: 'Internal server error'});
+    }
+
+}
+
 module.exports = {
     createComment,
+    editComment,
+    deleteComment,
 };

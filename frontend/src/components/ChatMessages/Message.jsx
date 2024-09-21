@@ -7,7 +7,7 @@ export default function Message({ message, sender, currentUsername, otherUsernam
     return (
         <li className={`${styles.messageItem} ${messageClass}`}>
             <p className={styles.username}>{username}</p>
-            <p>{message.content}</p>
+            <p>{message.text}</p>
             <p className={styles.timestamp}>{new Date(message.createdAt).toLocaleString()}</p>
         </li>
     );
