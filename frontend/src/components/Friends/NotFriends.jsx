@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Friend from "./Friend"
 import styles from './Friends.module.css'
 
-export default function NotFriends({ currentUser }) {
+export default function NotFriends({ currentUser, searchTerm, onClose }) {
 
     const [notFriends, setNotFriends] = useState([])
 
@@ -15,27 +15,17 @@ export default function NotFriends({ currentUser }) {
             },
         })
         .then(response => response.json())
-        .then(data => setNotFriends(data))
+        .then(data => {
+            setNotFriends(data)
+            console.log(data);
+        })
         .catch(error => console.error('Error:', error));
     }, [])
-
-    const handleFollow = (user) => {
-        fetch('http://localhost:3000/follower', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: user.username })
-        })
-        .then(response => response.json())
-        .then(data => setNotFriends(data))
-        .catch(error => console.error('Error:', error));
-    }
 
     return (
         <div className={styles["message-users"]}>
             {notFriends.map((user, index) => (
-                <Friend key={index} user={user} onFollow={handleFollow}/>
+                <Friend key={index} user={user} currentUser={currentUser} searchTerm={searchTerm} onClose={onClose}/>
         ))}
         </div>
     )

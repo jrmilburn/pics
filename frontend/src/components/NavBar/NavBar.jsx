@@ -7,6 +7,7 @@ import createIcon from '../../assets/create.svg';
 import Users from '../Users/Users';
 import Avatar from '../Common/Avatar';
 import SearchModal from './searchModal';
+import CreateModal from '../Create/Create';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -15,11 +16,20 @@ export default function NavBar({ messagePage, setMessagePage }) {
     const { currentUser, logout } = useContext(AuthContext);
     const [activeLink, setActiveLink] = useState('/');
     const [searchVisible, setSearchVisible] = useState(false);
+    const [createVisible, setCreateVisible] = useState(false);
 
     const openSearch = (e) => {
         e.preventDefault();
         setActiveLink('/search');
+        setCreateVisible(false);
         setSearchVisible(true);
+    }
+
+    const openCreate = (e) => {
+        e.preventDefault();
+        setActiveLink('/create');
+        setSearchVisible(false);
+        setCreateVisible(true);
     }
 
     const handleNavLinkClick = (path) => {
@@ -33,6 +43,7 @@ export default function NavBar({ messagePage, setMessagePage }) {
 
     const handleClose = () => {
         setSearchVisible(false);
+        setCreateVisible(false);
     }
 
     return (
@@ -56,10 +67,10 @@ export default function NavBar({ messagePage, setMessagePage }) {
                                         <NavLink to="/message" onClick={() => handleNavLinkClick('/message')} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                     <li className={styles['main-nav-item']}>
-                                        <NavLink to="/profile" onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username} /><p className={activeLink === '/profile' ? styles.selected : '' }></p></NavLink>
+                                        <NavLink to={`/profile/${currentUser.user.id}`} onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username} /><p className={activeLink === '/profile' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                     <li className={styles['main-nav-item']}>
-                                        <NavLink to="/create" onClick={() => handleNavLinkClick('/create')} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }></p></NavLink>
+                                        <NavLink to="/" onClick={openCreate} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }></p></NavLink>
                                     </li>
                                 </ul>
                             </nav>
@@ -86,10 +97,10 @@ export default function NavBar({ messagePage, setMessagePage }) {
                                 <NavLink to="/message" onClick={() => handleNavLinkClick('/message')} ><img src={messageIcon} /><p className={activeLink === '/message' ? styles.selected : '' }>Messages</p></NavLink>
                             </li>
                             <li className={styles['main-nav-item']}>
-                                <NavLink to="/profile" onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username}/><p className={activeLink === '/profile' ? styles.selected : '' }>Profile</p></NavLink>
+                                <NavLink to={`/profile/${currentUser.user.id}`} onClick={() => handleNavLinkClick('/profile')} ><Avatar username={currentUser.user.username}/><p className={activeLink === '/profile' ? styles.selected : '' }>Profile</p></NavLink>
                             </li>
                             <li className={styles['main-nav-item']}>
-                                <NavLink to="/create" onClick={() => handleNavLinkClick('/create')} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }>Create</p></NavLink>
+                                <NavLink to="/" onClick={openCreate} ><img src={createIcon} /><p className={activeLink === '/create' ? styles.selected : '' }>Create</p></NavLink>
                             </li>
                         </ul>
                     </nav>
@@ -101,6 +112,7 @@ export default function NavBar({ messagePage, setMessagePage }) {
         )}
 
         <SearchModal visible={searchVisible} onClose={handleClose} currentUser={currentUser}/>
+        <CreateModal visible={createVisible} onClose={handleClose} currentUser={currentUser}/>
             
         </>
     );

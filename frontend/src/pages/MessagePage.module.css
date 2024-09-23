@@ -32,7 +32,7 @@
 
 .chat-nav {
     overflow-y: auto; /* Allow scrolling only on overflow */
-    height: 100%; /* Adjust the height to fit within the screen, leaving space for other elements */
+    height: calc(100% - 4rem); /* Adjust the height to fit within the screen, leaving space for other elements */
     padding: 2rem 2rem 2rem 0;
     width: 100%;
     max-width: calc(250px + 4rem);

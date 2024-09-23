@@ -1,0 +1,51 @@
+.profile-header {
+    width: 80%;
+    margin: 8rem auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    position: relative;
+}
+
+.profile-header img {
+    scale: 2.5;
+    grid-column: 1/2;
+}
+
+.profile-info {
+    grid-column: 2/3;
+}
+
+.username,
+.profile-stats,
+.user-tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(-25%, 50%);
+}
+
+.settings {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.username button {
+    font-size: 1.5rem;
+}
+
+.username img {
+    scale: 1;;
+
+    transition: scale 0.3s;
+}
+
+.username img:hover {
+    cursor: pointer;
+    scale: 1.03;
+}

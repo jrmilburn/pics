@@ -34,7 +34,7 @@ app.use(cors());
 app.use(passport.initialize());
 
 app.use('/auth', authRouter);
-app.use('/user', userRouter);
+app.use('/user', passport.authenticate('jwt', {session: false}), userRouter);
 app.use('/follower', passport.authenticate('jwt', { session: false }), followerRouter);
 app.use('/post', postRouter);
 app.use('/comment', commentRouter);

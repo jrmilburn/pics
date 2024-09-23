@@ -39,12 +39,15 @@ async function createPost(req, res) {
   const userId = req.user.id;
   const { caption } = req.body;
 
+  console.log('userId', userId);
+  console.log('caption', caption);
+
   try {
     
     const post = await prisma.post.create({
       data: {
         caption,
-        authorId: userId,
+        userId: userId,
       },
     });
 
@@ -99,8 +102,52 @@ async function deletePost(req, res) {
 
 }
 
+async function likePost(req, res) {
+
+  const userId = req.user.id;
+  const { postId } = req.params;
+
+  try {
+
+    const like = await prisma.postLike.create({
+      data: {
+        postId: postId,
+        userId: userId,
+      }
+    })
+
+    res.json(like);
+
+  } catch(error) {
+    return res.status(500).json({message: 'Internal server error'});
+  }
+}
+
+async function unlikePost(req, res) {
+
+  const userId = req.user.id;
+  const { postId } = req.params;
+
+  try {
+
+    const like = await prisma.postLike.deleteMany({
+      where: {
+        postId: postId,
+        userId: userId,
+      }
+    })
+
+    res.json(like);
+
+  } catch(error) {
+    return res.status(500).json({message: 'Internal server error'});
+  }
+}
+
 module.exports = {
     getAllPosts,
     createPost,
-    editPost
+    editPost,
+    likePost,
+    unlikePost,
 }

@@ -18,7 +18,7 @@ export default function MessagePage() {
     return (
         <div className={styles["dashboard"]}>
             <div className={styles["chat-nav"]}>
-                 <Users handleSelect={handleUserClick}/>
+                 <Users handleSelect={handleUserClick} currentUser={currentUser}/>
             </div>
             <div className={styles["chat"]}>
                 {selectedChat ? (

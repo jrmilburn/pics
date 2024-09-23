@@ -7,7 +7,6 @@ import RegisterPage from './pages/RegisterPage';
 import IndexPage from './pages/IndexPage';
 import MessagePage from './pages/MessagePage';
 import ProfilePage from './pages/ProfilePage';
-import CreatePage from './pages/CreatePage';
 import PrivateRoute from './context/PrivateRoute';
 import NavBar from './components/NavBar/NavBar';
 
@@ -24,8 +23,7 @@ function App() {
           <Route path='/' element={<NavBar messagePage={messagePage} setMessagePage={setMessagePage} />}>
             <Route index element={<IndexPage />} />
             <Route path='/message' element={<MessagePage />} />
-            <Route path='/profile' element={<ProfilePage />} />
-            <Route path='/create' element={<CreatePage />} />
+            <Route path='/profile/:id' element={<ProfilePage />} />
           </Route>
         </Route>
 

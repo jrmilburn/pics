@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styles from './Users.module.css'
 import User from "./User"
 
-export default function Users({ handleSelect }) {
+export default function Users({ handleSelect, currentUser }) {
 
     const [users, setUsers] = useState([])
 
@@ -11,6 +11,7 @@ export default function Users({ handleSelect }) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentUser.token}`
             },
         })
         .then(response => response.json())

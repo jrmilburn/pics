@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './Post.module.css';
 import { useState } from 'react';
 import Avatar from '../Common/Avatar';
-
+import HeartBlack from '../../assets/heartblack.svg';
+import HeartRed from '../../assets/heartred.svg';
 import Comment from '../Comment/Comment';
 
 const Post = ({ content, author, createdAt, postLikes, comments, currentUser, postId }) => {
-
-  console.log(currentUser);
-
+  const [liked, setLiked] = useState(postLikes.some(like => like.userId === currentUser.user.id));
+  const [likesCount, setLikesCount] = useState(postLikes.length); // Track the like count separately
   const [showComments, setShowComments] = useState(false);
   const [newComment, setNewComment] = useState('');
 
@@ -17,22 +17,52 @@ const Post = ({ content, author, createdAt, postLikes, comments, currentUser, po
   }
 
   const handleCommentSubmit = async () => {
-
     const response = await fetch('http://localhost:3000/comment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${currentUser.token}`
+        'Authorization': `Bearer ${currentUser.token}`,
       },
       body: JSON.stringify({
         text: newComment,
-        postId: postId
-      })
-    })
+        postId: postId,
+      }),
+    });
 
     setNewComment('');
+  };
 
-  }
+  const handleLikePost = async () => {
+    setLiked(true);
+    setLikesCount(likesCount + 1); // Increment the like count
+
+    const response = await fetch(`http://localhost:3000/post/${postId}/like`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${currentUser.token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const handleUnLikePost = async () => {
+    setLiked(false);
+    setLikesCount(likesCount - 1); // Decrement the like count
+
+    const response = await fetch(`http://localhost:3000/post/${postId}/like`, {
+      method: 'DELETE', 
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${currentUser.token}`,
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+  };
 
   return (
     <div className={styles["post"]}>
@@ -49,11 +79,16 @@ const Post = ({ content, author, createdAt, postLikes, comments, currentUser, po
         <p>{content}</p>
       </div>
       <div className={styles["likes"]}>
-        <span>{postLikes.length} likes</span>
+        <span>{likesCount} likes</span>
+        {liked ? (
+          <button onClick={handleUnLikePost} className={styles['like-btn']}><img src={HeartRed} alt="Unlike" /></button>
+        ) : (
+          <button onClick={handleLikePost} className={styles['like-btn']}><img src={HeartBlack} alt="Like" /></button>
+        )}
       </div>
       <div className={styles["comments"]}>
         <button onClick={() => setShowComments(!showComments)} className={styles['comments-btn']}>
-          {showComments ? 'Hide comments' : `Show all ${comments.length} comments` }
+          {showComments ? 'Hide comments' : `Show all ${comments.length} comments`}
         </button>
         {showComments && (
           <div>
@@ -68,7 +103,7 @@ const Post = ({ content, author, createdAt, postLikes, comments, currentUser, po
             type="text"
             value={newComment}
             onChange={handleCommentChange}
-            placeholder='Add a comment'
+            placeholder="Add a comment"
             className={styles["comment-input"]}
         />
         <button onClick={handleCommentSubmit} className={styles["comment-submit"]}>Comment</button>

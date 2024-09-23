@@ -1,9 +1,10 @@
 import styles from './searchModal.module.css';
 import NotFriends from '../Friends/NotFriends';
+import { useState } from 'react';
 
 export default function SearchModal({ visible, onClose, currentUser }) {
 
-    console.log("SearchModal visible: ", visible);
+    const [searchTerm, setSearchTerm] = useState('');
 
     if(!visible) return null;
 
@@ -19,9 +20,13 @@ export default function SearchModal({ visible, onClose, currentUser }) {
             onClick={handleOverlayClick} >
 
             <div className={styles["search-modal"]}>
-                <h2>Search</h2>
-                <input type="text" placeholder="Search for users" />
-                <NotFriends currentUser={currentUser} />
+                <input 
+                    type="text" 
+                    placeholder="Search for users" 
+                    className={styles['user-search']} 
+                    onChange={(e) => setSearchTerm(e.target.value)} 
+                    value={searchTerm}/>
+                <NotFriends currentUser={currentUser} searchTerm={searchTerm} onClose={onClose}/>
             </div>
 
         </div>

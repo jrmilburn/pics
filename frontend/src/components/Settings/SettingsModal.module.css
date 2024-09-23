@@ -1,4 +1,4 @@
-.search-modal-overlay {
+.settings-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,20 +11,11 @@
     z-index: 1000;
 }
 
-.search-modal {
+.settings-modal {
     background-color: white;
     padding: 1.5rem;
     border-radius: 0.5rem;
     height: 60vh;
     width: 40%;
     z-index: 1001;
-}
-
-.user-search {
-    width: 90%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-    font-size: 1.5rem;
 }
