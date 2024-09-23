@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './LoginPage.module.css';
+import styles from './RegisterPage.module.css';
 
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
@@ -43,53 +43,65 @@ export default function RegisterPage() {
             <form className={styles.form} onSubmit={handleSubmit}>
                 <h1 className={styles.title}>Register</h1>
                 {error && <p className={styles.error}>{error}</p>}
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={styles.input}
-                />
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    className={styles.input}
-                />
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className={styles.input}
-                />
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className={styles.input}
-                />
-                <input
+                <div className={styles["fields"]}>
+
+                <div className={styles["left-form"]}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className={styles.input}
+                    />
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        className={styles.input}
+                    />
+                    <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className={styles.input}
-                />
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className={styles.input}
-                />
+                    />
+                </div>
+
+                <div className={styles["right-form"]}>
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className={styles.input}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        className={styles.input}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className={styles.input}
+                    />
+                </div>
+
+                </div>
+                
                 <button type="submit" className={styles.button}>Register</button>
                 <p className={styles.loginLink}>
                     Already have an account? <Link to="/login">Login here</Link>
                 </p>
             </form>
         </div>
+
+        
     );
 }

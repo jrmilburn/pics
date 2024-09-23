@@ -7,7 +7,7 @@ const MAX_POSTS_PER_USER = 10;
 const MAX_COMMENTS_PER_POST = 5;
 const MAX_MESSAGES_PER_USER = 20;
 const MAX_FOLLOWERS_PER_USER = 30;
-const SALT_ROUNDS = 12;
+const SALT_ROUNDS = 10;
 
 async function clearDatabase() {
     await prisma.commentLike.deleteMany({});
