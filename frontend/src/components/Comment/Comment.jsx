@@ -1,13 +1,11 @@
 import styles from "./Comment.module.css";
+import Avatar from "../Common/Avatar";
 
 export default function Comment({ author, content, commentLikes }) {
   return (
     <div className={styles["comment"]}>
       <div className={styles["comment-author"]}>
-        <img
-          src={`https://ui-avatars.com/api/?name=${author}&background=0D8ABC&color=fff`}
-          alt={`${author}'s avatar`}
-        />
+        <Avatar username={author}/>
       </div>
       <div className={styles["comment-content"]}>
         <p><strong><span>{author}</span></strong>  {content}</p>

@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('../../assets/ProtestGuerrilla-Regular.ttf') format('truetype');
+    src: url('../../assets/CedarvilleCursive-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -85,13 +85,6 @@ ul li a img {
     height: 4rem;
 }
 
-nav h1 {
-    font-family: 'CustomFont', cursive;
-    font-size: 4rem;
-    margin: 2rem 0 0 0rem;
-    color: #333;
-}
-
 nav {
     border-right: 1px solid #ccc;
     height: 100%;
@@ -112,4 +105,19 @@ li:hover img {
 .selected {
     font-family: 'LightFont', sans-serif;
     font-weight: 300;
+}
+
+.logo-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo-nav h2 {
+
+    font-size: 3rem;
+    font-family: 'CustomFont', cursive;
+    margin-bottom: 2rem;
+
 }

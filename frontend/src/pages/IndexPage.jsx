@@ -35,7 +35,7 @@ export default function IndexPage() {
             <div className={styles["posts"]}>
 
                 {posts.map((post, index) => (
-                    <Post key={index} content={post.caption} author={post.author.username} createdAt={post.createdAt} postLikes={post.likes} comments={post.comments} currentUser={currentUser} postId={post.id} />
+                    <Post key={index} content={post.caption} image={post.image} author={post.author.username} createdAt={post.createdAt} postLikes={post.likes} comments={post.comments} currentUser={currentUser} postId={post.id} />
                 ))}
 
             </div>

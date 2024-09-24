@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './RegisterPage.module.css';
+import styles from './AuthPage.module.css';
+import registerImg from '../assets/cameralense.webp';
+import Logo from '../components/Common/Logo';
 
 export default function RegisterPage() {
     const [email, setEmail] = useState('');
@@ -40,6 +42,19 @@ export default function RegisterPage() {
 
     return (
         <div className={styles.container}>
+
+            <div className={styles["image"]}>
+
+                <img src={registerImg} alt="" />
+                <div className={styles["image-logo"]}>
+                    <h2>Pics</h2>
+                    <Logo height={64} width={64} dark={false}/>
+                </div>
+
+            </div>
+
+            <div className={styles["right-side"]}>
+
             <form className={styles.form} onSubmit={handleSubmit}>
                 <h1 className={styles.title}>Register</h1>
                 {error && <p className={styles.error}>{error}</p>}
@@ -100,6 +115,8 @@ export default function RegisterPage() {
                     Already have an account? <Link to="/login">Login here</Link>
                 </p>
             </form>
+
+            </div>
         </div>
 
         

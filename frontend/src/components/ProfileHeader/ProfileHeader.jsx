@@ -2,6 +2,7 @@ import styles from './ProfileHeader.module.css';
 import Avatar from '../Common/Avatar';
 import Settings from '../../assets/settings.svg';
 import SettingsModal from '../Settings/SettingsModal';
+import EditProfile from '../EditProfile/EditProfile';
 import { useState } from 'react';   
 
 export default function ProfileHeader({ user, currentUser }) {
@@ -9,6 +10,7 @@ export default function ProfileHeader({ user, currentUser }) {
     if(!user || !user.posts || !user.followers || !user.following) return null;
 
     const [showSettings, setShowSettings] = useState(false);
+    const [editProfile, setEditProfile] = useState(false);
 
     return (
         <div className={styles["profile-header"]}>
@@ -16,7 +18,7 @@ export default function ProfileHeader({ user, currentUser }) {
             <div className={styles["profile-info"]}>
                 <div className={styles["username"]}>
                     <h1>{user.username}</h1>
-                    <button>Edit Profile</button>
+                    <button onClick={() => setEditProfile(true)}>Edit Profile</button>
                     <img src={Settings} alt="" className={styles['settings']} onClick={() => setShowSettings(true)}/>
                 </div>
                 <div className={styles["profile-stats"]}>
@@ -30,6 +32,8 @@ export default function ProfileHeader({ user, currentUser }) {
             </div>
 
             <SettingsModal visible={showSettings} onClose={() => setShowSettings(false)} currentUser={currentUser} />
+            <EditProfile visible={editProfile} onClose={() => setEditProfile(false)} currentUser={currentUser} />
+
         </div>
     )
 }

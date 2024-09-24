@@ -49,7 +49,44 @@ async function getUser(req, res) {
         res.json(user);
 }
 
+async function getUserByUsername(req, res) {
+
+  const username = req.params.username;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      username: username
+    },
+
+  })
+
+  res.json(user);
+
+}
+
+async function updateUser(req, res) {
+
+  const userId = req.user.id;
+  const profilePicture = req.file ? `/uploads/${req.file.filename}` : null;
+  const { bio } = req.body;
+
+  const user = await prisma.user.update({
+    where: {
+      id: userId
+    },
+    data: {
+      bio: bio,
+      profilePicture: profilePicture,
+    }
+  })
+
+  res.json(user);
+
+}
+
 module.exports = {
     getUsers,
-    getUser
+    getUser,
+    getUserByUsername,
+    updateUser
 };

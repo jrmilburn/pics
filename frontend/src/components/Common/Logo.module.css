@@ -1,0 +1,10 @@
+/* Logo.module.css */
+.logo {
+
+}
+
+  .logo-image {
+    max-height: 100%; /* or a specific value */
+    max-width: 100%;  /* or a specific value */
+    object-fit: contain;
+  }

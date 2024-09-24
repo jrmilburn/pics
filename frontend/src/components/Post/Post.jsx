@@ -6,7 +6,7 @@ import HeartBlack from '../../assets/heartblack.svg';
 import HeartRed from '../../assets/heartred.svg';
 import Comment from '../Comment/Comment';
 
-const Post = ({ content, author, createdAt, postLikes, comments, currentUser, postId }) => {
+const Post = ({ content, image, author, createdAt, postLikes, comments, currentUser, postId }) => {
   const [liked, setLiked] = useState(postLikes.some(like => like.userId === currentUser.user.id));
   const [likesCount, setLikesCount] = useState(postLikes.length); // Track the like count separately
   const [showComments, setShowComments] = useState(false);
@@ -76,6 +76,7 @@ const Post = ({ content, author, createdAt, postLikes, comments, currentUser, po
         </div>
       </div>
       <div className={styles["post-content"]}>
+        {image && <img src={`http://localhost:3000${image}`} alt="Post" className={styles['post-image']} />}
         <p>{content}</p>
       </div>
       <div className={styles["likes"]}>

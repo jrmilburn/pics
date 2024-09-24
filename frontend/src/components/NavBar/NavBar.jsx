@@ -10,6 +10,7 @@ import SearchModal from './searchModal';
 import CreateModal from '../Create/Create';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import Logo from '../Common/Logo';
 
 export default function NavBar({ messagePage, setMessagePage }) {
 
@@ -54,8 +55,8 @@ export default function NavBar({ messagePage, setMessagePage }) {
                         <div className={styles["nav-messages"]}>
                             <nav className={styles['icons']}>
                                 <ul className={styles['main-nav']}>
-                                    <li className={styles['main-nav-item']}>
-                                        <h1>pics</h1>
+                                    <li className={styles['logo-nav']}>
+                                        <h2>Pics</h2>
                                     </li>
                                     <li className={styles['main-nav-item']}>
                                         <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }></p></NavLink>
@@ -84,8 +85,8 @@ export default function NavBar({ messagePage, setMessagePage }) {
                 <div className={styles["nav"]}>
                     <nav>
                         <ul className={styles['main-nav']}>
-                            <li className={styles['main-nav-item']}>
-                                <h1>pics</h1>
+                            <li className={styles['logo-nav']}>
+                                <h2>pics</h2>
                             </li>
                             <li className={styles['main-nav-item']}>
                                 <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }>Home</p></NavLink>

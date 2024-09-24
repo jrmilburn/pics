@@ -38,15 +38,14 @@ async function createPost(req, res) {
 
   const userId = req.user.id;
   const { caption } = req.body;
-
-  console.log('userId', userId);
-  console.log('caption', caption);
+  const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
   try {
     
     const post = await prisma.post.create({
       data: {
         caption,
+        image: imageUrl,
         userId: userId,
       },
     });
