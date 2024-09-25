@@ -7,7 +7,7 @@ export default function Users({ handleSelect, currentUser }) {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/user', {
+        fetch('https://pics-backend.onrender.com/user', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

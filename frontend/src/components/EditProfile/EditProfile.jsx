@@ -35,7 +35,7 @@ export default function EditProfile({visible, onClose, currentUser, user}) {
         formData.append('profilePicture', image);
 
         try {
-            const response = await fetch('http://localhost:3000/user', {
+            const response = await fetch('https://pics-backend.onrender.com/user', {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${currentUser.token}`,

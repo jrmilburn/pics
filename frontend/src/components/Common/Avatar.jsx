@@ -5,7 +5,7 @@ export default function Avatar({ username }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/username/${username}`, {
+    fetch(`https://pics-backend.onrender.com/user/username/${username}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export default function Avatar({ username }) {
     <div>
       {user.profilePicture ? (
         <img
-          src={`http://localhost:3000${user.profilePicture}`}
+          src={`https://pics-backend.onrender.com${user.profilePicture}`}
           alt={`${username}'s avatar`}
           className={styles['avatar']}
         />

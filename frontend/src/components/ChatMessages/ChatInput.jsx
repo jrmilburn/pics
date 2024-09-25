@@ -10,7 +10,7 @@ export default function ChatInput({ currentUser, selectedUser }) {
     }
 
     const handleSendMessage = () => {
-        fetch(`http://localhost:3000/message/`, {
+        fetch(`https://pics-backend.onrender.com/message/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

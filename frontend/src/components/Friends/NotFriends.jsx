@@ -7,7 +7,7 @@ export default function NotFriends({ currentUser, searchTerm, onClose }) {
     const [notFriends, setNotFriends] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/follower', {
+        fetch('https://pics-backend.onrender.com/follower', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

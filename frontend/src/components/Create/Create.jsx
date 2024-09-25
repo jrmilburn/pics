@@ -36,7 +36,7 @@ export default function Create({ visible, onClose, currentUser }) {
     formData.append('image', image);      // Image is required
 
     try {
-      const response = await fetch('http://localhost:3000/post', {
+      const response = await fetch('https://pics-backend.onrender.com/post', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${currentUser.token}`, // No need for Content-Type with FormData

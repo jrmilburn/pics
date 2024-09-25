@@ -22,7 +22,7 @@ export default function RegisterPage() {
             return;
         }
 
-        const response = await fetch('http://localhost:3000/auth/register', {
+        const response = await fetch('https://pics-backend.onrender.com/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

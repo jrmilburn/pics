@@ -20,7 +20,7 @@ export default function ProfilePage() {
     }
 
     // Fetch the user data from the backend
-    fetch(`http://localhost:3000/user/${id}`, {
+    fetch(`https://pics-backend.onrender.com/user/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

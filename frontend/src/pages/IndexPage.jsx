@@ -17,7 +17,7 @@ export default function IndexPage() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/post', {
+        fetch('https://pics-backend.onrender.com/post', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import styles from './ChatMessages.module.css';
 import ChatInput from "./ChatInput";
 import Message from "./Message";
 
-const socket = io('http://localhost:3000');
+const socket = io('https://pics-backend.onrender.com');
 
 export default function ChatMessages({ currentUser, selectedUser }) {
 
@@ -12,7 +12,7 @@ export default function ChatMessages({ currentUser, selectedUser }) {
     const socketRef = useRef();
 
     useEffect(() => {
-        socketRef.current = io('http://localhost:3000', {
+        socketRef.current = io('https://pics-backend.onrender.com', {
           query: { userId: currentUser.user.id },
         });
     
@@ -33,7 +33,7 @@ export default function ChatMessages({ currentUser, selectedUser }) {
       }, [currentUser.user.id, selectedUser.id]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/message/${selectedUser.id}`, {
+        fetch(`https://pics-backend.onrender.com/message/${selectedUser.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

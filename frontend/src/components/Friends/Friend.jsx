@@ -15,7 +15,7 @@ export default function Friend({ user, currentUser, searchTerm, onClose }) {
         
         setUserFollowing([...userFollowing, { toUserId: user.id, fromUserId: currentUser.user.id }]);
 
-        fetch('http://localhost:3000/follower', {
+        fetch('https://pics-backend.onrender.com/follower', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export default function Friend({ user, currentUser, searchTerm, onClose }) {
             
             setUserFollowing(userFollowing.filter(follow => follow.toUserId !== user.id));
     
-            fetch(`http://localhost:3000/follower/${user.id}`, {
+            fetch(`https://pics-backend.onrender.com/follower/${user.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const Post = ({ content, image, author, createdAt, postLikes, comments, currentU
   }
 
   const handleCommentSubmit = async () => {
-    const response = await fetch('http://localhost:3000/comment', {
+    const response = await fetch('https://pics-backend.onrender.com/comment', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const Post = ({ content, image, author, createdAt, postLikes, comments, currentU
     setLiked(true);
     setLikesCount(likesCount + 1); // Increment the like count
 
-    const response = await fetch(`http://localhost:3000/post/${postId}/like`, {
+    const response = await fetch(`https://pics-backend.onrender.com/post/${postId}/like`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const Post = ({ content, image, author, createdAt, postLikes, comments, currentU
     setLiked(false);
     setLikesCount(likesCount - 1); // Decrement the like count
 
-    const response = await fetch(`http://localhost:3000/post/${postId}/like`, {
+    const response = await fetch(`https://pics-backend.onrender.com/post/${postId}/like`, {
       method: 'DELETE', 
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const Post = ({ content, image, author, createdAt, postLikes, comments, currentU
         </div>
       </div>
       <div className={styles["post-content"]}>
-        {image && <img src={`http://localhost:3000${image}`} alt="Post" className={styles['post-image']} />}
+        {image && <img src={`https://pics-backend.onrender.com${image}`} alt="Post" className={styles['post-image']} />}
         <p>{content}</p>
       </div>
       <div className={styles["likes"]}>
