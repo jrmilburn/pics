@@ -63,9 +63,11 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
+const PORT = proccess.env.PORT || 3000;
+
 // Server listening
 server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;

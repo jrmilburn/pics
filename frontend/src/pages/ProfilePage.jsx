@@ -28,12 +28,10 @@ export default function ProfilePage() {
       },
     })
       .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
         return response.json();
       })
       .then((data) => {
+        console.log('User data:', data);
         setUser(data); // Set the user data from the API response
         setLoading(false); // Stop loading
       })

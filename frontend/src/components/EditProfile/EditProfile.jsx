@@ -1,10 +1,15 @@
 import styles from './EditProfile.module.css';
 import { useState } from 'react';
 
-export default function EditProfile({visible, onClose, currentUser}) {
+export default function EditProfile({visible, onClose, currentUser, user}) {
+
+    if (!visible) return null;
+    
+    console.log(user);
 
     const [bio, setBio] = useState(user.bio);
     const [image, setImage] = useState(user.image);
+    const [error, setError] = useState(null);
 
     const handleOverlayClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -48,6 +53,7 @@ export default function EditProfile({visible, onClose, currentUser}) {
             onClose();
         } catch(error) {
             console.error('Error updating user: ', error);
+            setError(error.message);
         }    
 
     }

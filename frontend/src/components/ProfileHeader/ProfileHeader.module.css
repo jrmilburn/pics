@@ -30,6 +30,17 @@
     transform: translate(-25%, 50%);
 }
 
+.profile-bio {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 40%;
+    max-height: 40%;
+    max-width: 50%;
+    transform: translate(-40%, 100%);
+}
+
 .settings {
     width: 2.5rem;
     height: 2.5rem;

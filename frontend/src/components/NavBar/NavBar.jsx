@@ -86,7 +86,7 @@ export default function NavBar({ messagePage, setMessagePage }) {
                     <nav>
                         <ul className={styles['main-nav']}>
                             <li className={styles['logo-nav']}>
-                                <h2>pics</h2>
+                                <h2>Pics</h2>
                             </li>
                             <li className={styles['main-nav-item']}>
                                 <NavLink to="/" onClick={() => handleNavLinkClick('/')} ><img src={homeIcon} /><p className={activeLink === '/' ? styles.selected : '' }>Home</p></NavLink>

@@ -29,7 +29,7 @@ userRouter.get('/username/:username',
     userController.getUserByUsername);
 userRouter.put('/', 
     passport.authenticate('jwt', {session: false}),
-    upload.single('image'),
+    upload.single('profilePicture'),
     userController.updateUser)
 
 module.exports = userRouter;

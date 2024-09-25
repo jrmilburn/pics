@@ -67,6 +67,7 @@ export default function RegisterPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className={styles.input}
+                        tabIndex={1}
                     />
                     <input
                         type="text"
@@ -74,6 +75,7 @@ export default function RegisterPage() {
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         className={styles.input}
+                        tabIndex={3}
                     />
                     <input
                     type="password"
@@ -81,6 +83,7 @@ export default function RegisterPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className={styles.input}
+                    tabIndex={5}
                     />
                 </div>
 
@@ -91,6 +94,7 @@ export default function RegisterPage() {
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         className={styles.input}
+                        tabIndex={2}
                     />
                     <input
                         type="text"
@@ -98,6 +102,7 @@ export default function RegisterPage() {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         className={styles.input}
+                        tabIndex={4}
                     />
                     <input
                         type="password"
@@ -105,6 +110,7 @@ export default function RegisterPage() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className={styles.input}
+                        tabIndex={6}
                     />
                 </div>
 
